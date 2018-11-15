@@ -7,19 +7,25 @@
  */
 class Helios_Videogallery_Block_Adminhtml_Videogallery_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget_Form
 {
+    /**
+     * @return Mage_Adminhtml_Block_Widget_Form
+     * @throws Varien_Exception
+     */
     protected function _prepareForm()
     {
         $form = new Varien_Data_Form();
         $this->setForm($form);
-        $fieldset = $form->addFieldset("videogallery_form", array("legend" => Mage::helper("videogallery")->__("Video Gallery Information")));
+        $fieldset = $form->addFieldset("videogallery_form", array(
+            "legend" => $this->__("Video Gallery Information")
+        ));
         $fieldset->addField("name", "label", array(
-            "label" => Mage::helper("videogallery")->__("Video Name"),
+            "label" => $this->__("Video Name"),
             "class" => "required-entry",
             "required" => false,
             "name" => "videogallery_url",
         ));
         $fieldset->addField("videogallery_url", "text", array(
-            "label" => Mage::helper("videogallery")->__("Enter Youtube URL"),
+            "label" => $this->__("Enter Youtube URL"),
             "class" => "required-entry",
             "required" => true,
             "name" => "videogallery_url",

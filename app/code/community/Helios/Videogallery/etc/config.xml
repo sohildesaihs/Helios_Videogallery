@@ -32,6 +32,15 @@
                 </videogallery>
             </updates>
         </layout>
+        <translate>
+            <modules>
+                <Helios_Videogallery>
+                    <files>
+                        <default>Helios_Videogallery.csv</default>
+                    </files>
+                </Helios_Videogallery>
+            </modules>
+        </translate>
     </frontend>
     <global>
         <helpers>
@@ -137,5 +146,14 @@
                 </videogallery>
             </updates>
         </layout>
+        <translate>
+            <modules>
+                <Helios_Videogallery>
+                    <files>
+                        <default>Helios_Videogallery.csv</default>
+                    </files>
+                </Helios_Videogallery>
+            </modules>
+        </translate>
     </adminhtml>
 </config> 

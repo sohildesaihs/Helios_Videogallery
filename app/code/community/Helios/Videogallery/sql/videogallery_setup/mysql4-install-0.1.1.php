@@ -1,7 +1,7 @@
 <?php
 $installer = $this;
 $installer->startSetup();
-$sql=<<<SQLTEXT
+$sql = <<<SQLTEXT
     DROP TABLE IF EXISTS `videogallery`;
     CREATE TABLE `videogallery`(
     `videogallery_id` int NOT NULL auto_increment,
@@ -11,8 +11,5 @@ $sql=<<<SQLTEXT
 SQLTEXT;
 
 $installer->run($sql);
-//demo 
-//Mage::getModel('core/url_rewrite')->setId(null);
-//demo 
 $installer->endSetup();
 	 

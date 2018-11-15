@@ -7,6 +7,9 @@
  */
 class Helios_Videogallery_Adminhtml_Rss_RssController extends Mage_Core_Controller_Front_Action
 {
+    /**
+     * 
+     */
     public function videogalleryAction()
     {
         $this->getResponse()->setHeader('Content-type', 'text/xml; charset=UTF-8');
@@ -14,6 +17,9 @@ class Helios_Videogallery_Adminhtml_Rss_RssController extends Mage_Core_Controll
         $this->renderLayout();
     }
 
+    /**
+     * @return Mage_Core_Controller_Front_Action
+     */
     public function preDispatch()
     {
         if ($this->getRequest()->getActionName() == 'videogallery') {

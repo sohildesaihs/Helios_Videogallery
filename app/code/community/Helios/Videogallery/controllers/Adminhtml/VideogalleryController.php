@@ -7,54 +7,76 @@
  */
 class Helios_Videogallery_Adminhtml_VideogalleryController extends Mage_Adminhtml_Controller_Action
 {
+    /**
+     * @return $this
+     */
     protected function _initAction()
     {
-        $this->loadLayout()->_setActiveMenu("videogallery/videogallery")->_addBreadcrumb(Mage::helper("adminhtml")->__("Videogallery  Manager"), Mage::helper("adminhtml")->__("Videogallery Manager"));
+        $this->loadLayout()
+            ->_setActiveMenu("videogallery/videogallery")
+            ->_addBreadcrumb($this->__("Video Gallery  Manager"), $this->__("Video Gallery Manager"));
+
         return $this;
     }
 
+    /**
+     *
+     */
     public function indexAction()
     {
-        $this->_title($this->__("Videogallery"));
-        $this->_title($this->__("Manager Videogallery"));
+        $this->_title($this->__("Video Gallery"));
+        $this->_title($this->__("Video Gallery Manager"));
         $this->_initAction();
         $this->renderLayout();
     }
 
+    /**
+     * @throws Mage_Core_Exception
+     * @throws Varien_Exception
+     */
     public function editAction()
     {
-        $this->_title($this->__("Videogallery"));
-        $this->_title($this->__("Videogallery"));
+        $this->_title($this->__("Video Gallery"));
+        $this->_title($this->__("Video Gallery"));
         $this->_title($this->__("Edit Item"));
 
         $id = $this->getRequest()->getParam("id");
         $model = Mage::getModel("videogallery/videogallery")->load($id);
+
         if ($model->getId()) {
             Mage::register("videogallery_data", $model);
             $this->loadLayout();
+
             $this->_setActiveMenu("videogallery/videogallery");
-            $this->_addBreadcrumb(Mage::helper("adminhtml")->__("Videogallery Manager"), Mage::helper("adminhtml")->__("Videogallery Manager"));
-            $this->_addBreadcrumb(Mage::helper("adminhtml")->__("Videogallery Description"), Mage::helper("adminhtml")->__("Videogallery Description"));
+            $this->_addBreadcrumb($this->__("Video Gallery Manager"), $this->__("Video Gallery Manager"));
+            $this->_addBreadcrumb($this->__("Video Gallery Description"), $this->__("Video Gallery Description"));
+
             $this->getLayout()->getBlock("head")->setCanLoadExtJs(true);
-            $this->_addContent($this->getLayout()->createBlock("videogallery/adminhtml_videogallery_edit"))->_addLeft($this->getLayout()->createBlock("videogallery/adminhtml_videogallery_edit_tabs"));
+            $this
+                ->_addContent($this->getLayout()->createBlock("videogallery/adminhtml_videogallery_edit"))
+                ->_addLeft($this->getLayout()->createBlock("videogallery/adminhtml_videogallery_edit_tabs"));
+
             $this->renderLayout();
         } else {
-            Mage::getSingleton("adminhtml/session")->addError(Mage::helper("videogallery")->__("Item does not exist."));
+            Mage::getSingleton("adminhtml/session")->addError($this->__("Video item does not exist."));
             $this->_redirect("*/*/");
         }
     }
 
+    /**
+     * @throws Mage_Core_Exception
+     * @throws Varien_Exception
+     */
     public function newAction()
     {
-
-        $this->_title($this->__("Videogallery"));
-        $this->_title($this->__("Videogallery"));
+        $this->_title($this->__("Video Gallery"));
+        $this->_title($this->__("Video Gallery"));
         $this->_title($this->__("New Item"));
 
         $id = $this->getRequest()->getParam("id");
         $model = Mage::getModel("videogallery/videogallery")->load($id);
-
         $data = Mage::getSingleton("adminhtml/session")->getFormData(true);
+
         if (!empty($data)) {
             $model->setData($data);
         }
@@ -63,22 +85,22 @@ class Helios_Videogallery_Adminhtml_VideogalleryController extends Mage_Adminhtm
 
         $this->loadLayout();
         $this->_setActiveMenu("videogallery/videogallery");
-
         $this->getLayout()->getBlock("head")->setCanLoadExtJs(true);
+        $this->_addBreadcrumb($this->__("Video Gallery Manager"), $this->__("Video Gallery Manager"));
+        $this->_addBreadcrumb($this->__("Video Gallery Description"), $this->__("Video Gallery Description"));
 
-        $this->_addBreadcrumb(Mage::helper("adminhtml")->__("Videogallery Manager"), Mage::helper("adminhtml")->__("Videogallery Manager"));
-        $this->_addBreadcrumb(Mage::helper("adminhtml")->__("Videogallery Description"), Mage::helper("adminhtml")->__("Videogallery Description"));
-
-
-        $this->_addContent($this->getLayout()->createBlock("videogallery/adminhtml_videogallery_edit"))->_addLeft($this->getLayout()->createBlock("videogallery/adminhtml_videogallery_edit_tabs"));
+        $this
+            ->_addContent($this->getLayout()->createBlock("videogallery/adminhtml_videogallery_edit"))
+            ->_addLeft($this->getLayout()->createBlock("videogallery/adminhtml_videogallery_edit_tabs"));
 
         $this->renderLayout();
-
     }
 
+    /**
+     * @throws Varien_Exception
+     */
     public function saveAction()
     {
-
         $post_data = $this->getRequest()->getPost();
         if ($post_data) {
             $url_key = $post_data['videogallery_url'];
@@ -94,44 +116,47 @@ class Helios_Videogallery_Adminhtml_VideogalleryController extends Mage_Adminhtm
                     ->setName($videoname)
                     ->save();
 
-                Mage::getSingleton("adminhtml/session")->addSuccess(Mage::helper("adminhtml")->__("Videogallery was successfully saved"));
+                Mage::getSingleton("adminhtml/session")->addSuccess($this->__("Video item successfully created"));
                 Mage::getSingleton("adminhtml/session")->setVideogalleryData(false);
 
                 if ($this->getRequest()->getParam("back")) {
                     $this->_redirect("*/*/edit", array("id" => $model->getId()));
                     return;
                 }
-                $this->_redirect("*/*/");
-                return;
             } catch (Exception $e) {
                 Mage::getSingleton("adminhtml/session")->addError($e->getMessage());
                 Mage::getSingleton("adminhtml/session")->setVideogalleryData($this->getRequest()->getPost());
                 $this->_redirect("*/*/edit", array("id" => $this->getRequest()->getParam("id")));
                 return;
             }
-
         }
+
         $this->_redirect("*/*/");
     }
 
-
+    /**
+     * @throws Varien_Exception
+     */
     public function deleteAction()
     {
         if ($this->getRequest()->getParam("id") > 0) {
             try {
                 $model = Mage::getModel("videogallery/videogallery");
                 $model->setId($this->getRequest()->getParam("id"))->delete();
-                Mage::getSingleton("adminhtml/session")->addSuccess(Mage::helper("adminhtml")->__("Item was successfully deleted"));
+                Mage::getSingleton("adminhtml/session")->addSuccess($this->__("Video item successfully deleted"));
                 $this->_redirect("*/*/");
             } catch (Exception $e) {
                 Mage::getSingleton("adminhtml/session")->addError($e->getMessage());
                 $this->_redirect("*/*/edit", array("id" => $this->getRequest()->getParam("id")));
             }
         }
+
         $this->_redirect("*/*/");
     }
 
-
+    /**
+     * @throws Varien_Exception
+     */
     public function massRemoveAction()
     {
         try {
@@ -140,10 +165,11 @@ class Helios_Videogallery_Adminhtml_VideogalleryController extends Mage_Adminhtm
                 $model = Mage::getModel("videogallery/videogallery");
                 $model->setId($id)->delete();
             }
-            Mage::getSingleton("adminhtml/session")->addSuccess(Mage::helper("adminhtml")->__("Item(s) was successfully removed"));
+            Mage::getSingleton("adminhtml/session")->addSuccess($this->__("Selected video item(s) successfully removed"));
         } catch (Exception $e) {
             Mage::getSingleton("adminhtml/session")->addError($e->getMessage());
         }
+
         $this->_redirect('*/*/');
     }
 
@@ -152,8 +178,9 @@ class Helios_Videogallery_Adminhtml_VideogalleryController extends Mage_Adminhtm
      */
     public function exportCsvAction()
     {
-        $fileName = 'videogallery.csv';
+        $fileName = Helios_Videogallery_Helper_Data::EXPORT_FILE_NAME . '.csv';
         $grid = $this->getLayout()->createBlock('videogallery/adminhtml_videogallery_grid');
+
         $this->_prepareDownloadResponse($fileName, $grid->getCsvFile());
     }
 
@@ -162,8 +189,9 @@ class Helios_Videogallery_Adminhtml_VideogalleryController extends Mage_Adminhtm
      */
     public function exportExcelAction()
     {
-        $fileName = 'videogallery.xml';
+        $fileName = Helios_Videogallery_Helper_Data::EXPORT_FILE_NAME . '.xml';
         $grid = $this->getLayout()->createBlock('videogallery/adminhtml_videogallery_grid');
+
         $this->_prepareDownloadResponse($fileName, $grid->getExcelFile($fileName));
     }
 }

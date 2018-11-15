@@ -7,7 +7,9 @@
  */
 class Helios_Videogallery_Block_Adminhtml_Videogallery_Grid extends Mage_Adminhtml_Block_Widget_Grid
 {
-
+    /**
+     * Helios_Videogallery_Block_Adminhtml_Videogallery_Grid constructor.
+     */
     public function __construct()
     {
         parent::__construct();
@@ -17,6 +19,9 @@ class Helios_Videogallery_Block_Adminhtml_Videogallery_Grid extends Mage_Adminht
         $this->setSaveParametersInSession(true);
     }
 
+    /**
+     * @return Mage_Adminhtml_Block_Widget_Grid
+     */
     protected function _prepareCollection()
     {
         $collection = Mage::getModel("videogallery/videogallery")->getCollection();
@@ -25,16 +30,20 @@ class Helios_Videogallery_Block_Adminhtml_Videogallery_Grid extends Mage_Adminht
         return parent::_prepareCollection();
     }
 
+    /**
+     * @return $this
+     * @throws Exception
+     */
     protected function _prepareColumns()
     {
         $this->addColumn("videogallery_id", array(
-            "header" => Mage::helper("videogallery")->__("ID"),
+            "header" => $this->__("ID"),
             "align" => "center",
             "type" => "number",
             "index" => "videogallery_id",
         ));
         $this->addColumn("videogallery_url", array(
-            "header" => Mage::helper("videogallery")->__("Video Thumbnail"),
+            "header" => $this->__("Video Thumbnail"),
             "index" => "videogallery_url",
             "align" => "center",
             "width" => "200px",
@@ -42,21 +51,21 @@ class Helios_Videogallery_Block_Adminhtml_Videogallery_Grid extends Mage_Adminht
         ));
 
         $this->addColumn("name", array(
-            "header" => Mage::helper("videogallery")->__("Video Name"),
+            "header" => $this->__("Video Name"),
             "index" => "name",
         ));
 
         $this->addColumn('action', array(
-            'header' => Mage::helper('videogallery')->__('Action'),
+            'header' => $this->__('Action'),
             'width' => '120',
             'type' => 'action',
             'getter' => 'getId',
             'actions' => array(
                 array(
-                    'caption' => Mage::helper('videogallery')->__('Delete Video'),
+                    'caption' => $this->__('Delete'),
                     'url' => array('base' => '*/*/delete'),
                     'field' => 'videogallery_id',
-                    'confirm' => Mage::helper('videogallery')->__('Are you sure?')
+                    'confirm' => $this->__('Are you sure?')
                 )
             ),
             'filter' => false,
@@ -64,28 +73,35 @@ class Helios_Videogallery_Block_Adminhtml_Videogallery_Grid extends Mage_Adminht
             'index' => 'stores',
             'is_system' => true,
         ));
-        $this->addRssList('videogallery/adminhtml_rss_rss/videogallery', Mage::helper('videogallery')->__('RSS'));
-        $this->addExportType('*/*/exportCsv', Mage::helper('sales')->__('CSV'));
-        $this->addExportType('*/*/exportExcel', Mage::helper('sales')->__('Excel'));
+        $this->addRssList('videogallery/adminhtml_rss_rss/videogallery', $this->__('RSS'));
+        $this->addExportType('*/*/exportCsv', $this->__('CSV'));
+        $this->addExportType('*/*/exportExcel', $this->__('Excel'));
 
         return parent::_prepareColumns();
     }
 
+    /**
+     * @param $row
+     * @return string
+     */
     public function getRowUrl($row)
     {
         return $this->getUrl("*/*/edit", array("id" => $row->getId()));
     }
 
-
+    /**
+     * @return $this|Mage_Adminhtml_Block_Widget_Grid
+     * @throws Varien_Exception
+     */
     protected function _prepareMassaction()
     {
         $this->setMassactionIdField('videogallery_id');
         $this->getMassactionBlock()->setFormFieldName('videogallery_ids');
         $this->getMassactionBlock()->setUseSelectAll(true);
         $this->getMassactionBlock()->addItem('remove_videogallery', array(
-            'label' => Mage::helper('videogallery')->__('Remove From Videogallery'),
+            'label' => $this->__('Delete Selected'),
             'url' => $this->getUrl('*/adminhtml_videogallery/massRemove'),
-            'confirm' => Mage::helper('videogallery')->__('Are you sure?')
+            'confirm' => $this->__('Are you sure?')
         ));
 
         return $this;

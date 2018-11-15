@@ -7,6 +7,10 @@
  */
 class Helios_Videogallery_Block_Adminhtml_Videogallery_Edit_Form extends Mage_Adminhtml_Block_Widget_Form
 {
+    /**
+     * @return Mage_Adminhtml_Block_Widget_Form
+     * @throws Varien_Exception
+     */
     protected function _prepareForm()
     {
         $form = new Varien_Data_Form(array(
