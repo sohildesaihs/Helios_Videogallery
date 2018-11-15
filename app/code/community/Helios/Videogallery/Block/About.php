@@ -16,7 +16,7 @@ class Helios_Videogallery_Block_About extends Mage_Adminhtml_Block_Abstract impl
      */
     public function render(Varien_Data_Form_Element_Abstract $element)
     {
-        $skinUrl = $this->getSkinUrl('images/Helios/logo.png');
+        $skinUrl = $this->getSkinUrl('images/helios/logo.png');
         $html = <<<HTML
     <div>
         <a href="http://www.heliossolutions.in/" target="_blank"><img src="$skinUrl"></a>

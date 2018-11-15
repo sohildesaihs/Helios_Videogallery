@@ -19,11 +19,11 @@
             </action>
         </reference>
         <reference name="head">
-            <action method="addItem"><type>skin_js</type><name>js/Helios/videogallery.js</name></action>
-            <action method="addItem"><type>skin_css</type><name>css/Helios/videogallery.css</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/helios/videogallery.js</name></action>
+            <action method="addItem"><type>skin_css</type><name>css/helios/videogallery.css</name></action>
         </reference>
         <reference name="content">
-            <block type="videogallery/index" name="videogallery_index" template="videogallery/videogallery.phtml"/>
+            <block type="videogallery/index" name="videogallery_index" template="helios/videogallery/videogallery.phtml"/>
         </reference>
     </videogallery_index_index>
 </layout>

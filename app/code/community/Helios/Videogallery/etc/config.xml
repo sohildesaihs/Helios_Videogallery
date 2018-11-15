@@ -28,7 +28,7 @@
         <layout>
             <updates>
                 <videogallery>
-                    <file>videogallery.xml</file>
+                    <file>helios/videogallery.xml</file>
                 </videogallery>
             </updates>
         </layout>
@@ -133,7 +133,7 @@
         <layout>
             <updates>
                 <videogallery>
-                    <file>videogallery.xml</file>
+                    <file>helios/videogallery.xml</file>
                 </videogallery>
             </updates>
         </layout>

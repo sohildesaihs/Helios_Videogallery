@@ -6,7 +6,7 @@
             <label>
                 <![CDATA[<div style="position: absolute;"><img id="hsvideogallery_block" src="" alt="" border="0" style="padding-right:5px;"/>Video Gallery</div>&nbsp;<script>
             var n = SKIN_URL.indexOf("adminhtml");
-            $('hsvideogallery_block').src = SKIN_URL.substring(0, n) + "adminhtml/default/default/images/Helios/favicon.ico";
+            $('hsvideogallery_block').src = SKIN_URL.substring(0, n) + "adminhtml/base/default/images/helios/favicon.ico";
             </script>]]>
             </label>
             <sort_order>0</sort_order>
