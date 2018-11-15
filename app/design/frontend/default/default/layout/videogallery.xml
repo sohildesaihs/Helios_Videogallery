@@ -1,0 +1,17 @@
+<?xml version="1.0"?>   
+<layout version="0.1.0">
+    <default>
+        <reference name="top.links">
+            <action method="addLink" translate="label title" module="videogallery"><label>Video Gallery</label><url>videogallery/</url><title>Video Gallery</title><prepare>ture</prepare><urlParams/><position>1000</position></action>
+        </reference>
+    </default>
+  <videogallery_index_index>   
+    <reference name="root">   
+      <action method="setTemplate"><template>page/1column.phtml</template></action>
+    </reference>
+    <reference name="content">   
+      <block type="videogallery/index" name="videogallery_index" template="videogallery/videogallery.phtml"/>   
+    </reference>   
+  </videogallery_index_index>   
+</layout>   
+	

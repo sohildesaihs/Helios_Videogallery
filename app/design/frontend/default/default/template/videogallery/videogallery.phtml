@@ -1,0 +1,61 @@
+<?php
+if(Mage::helper('videogallery')->checkEnableDisable()){
+$data = Mage::helper('videogallery')->getAllData();
+?>
+<div style="text-align: center">
+    <?php echo Mage::helper('videogallery')->getTitle(); echo Mage::helper('videogallery')->getDescription(); ?>
+    <?php
+    if(count($data )==0){
+       echo " <h2><b>Please Upload the Video.<b></h2>";
+    }
+    else{
+        foreach($data as $key=>$result){
+            $url_key = explode('?v=',$result['videogallery_url']);
+            if($key==0){
+                ?>
+                <div id="main_div_video_frame">
+                    <iframe id="videoframe" width="<?php echo Mage::helper('videogallery')->getWidth();?>" height="<?php echo Mage::helper('videogallery')->getHeight();?>" src="http://www.youtube-nocookie.com/embed/<?php echo $url_key[1]; ?>?wmode=opaque&rel=0&autohide=1&showinfo=0&autoplay=0" frameborder="0" allowfullscreen></iframe>
+                </div>
+    <?php
+            }
+                ?>
+                <div style="float: left;margin: 5px 10px 5px 5px;width: 285px;position: relative;">
+                    <a style="text-decoration:none;" href="#" onclick="selectvideo('<?php echo $url_key[1]; ?>');">    <img src="http://tafelzeil.heliossolutions.in/skin/frontend/default/tafelzeil/images/youtube.png" alt="" style="position: absolute;top: 100px;left: 125px;"><img src="http://img.youtube.com/vi/<?php echo $url_key[1] ?>/0.jpg" width="285px">
+                    <p style="text-align: justify;margin-top: 5px; "> <?php echo $result['name'];?></p></a>
+                </div>
+    <?php
+        }
+    }
+    ?>
+</div>
+<?php }
+else{
+    ?>
+<h2 style="border: 2px solid #000"><?php echo $this->__('This Extension is Currently Disable so, It will be redirected to our homepage in 5 seconds.') ?></h2>
+    <script type="text/javascript">
+        //<![CDATA[
+         setTimeout(function(){ location.href = '<?php echo $this->getUrl('') ?>'},5000);
+        //]]>
+    </script>
+<?php
+}?>
+<script type="text/javascript" charset="utf-8">
+    function scrollToElement(pageElement) {
+        var positionX = 0,
+            positionY = 0;
+
+        while(pageElement != null){
+            positionX += pageElement.offsetLeft;
+            positionY += pageElement.offsetTop;
+            pageElement = pageElement.offsetParent;
+            window.scrollTo(positionX, positionY);
+        }
+    }
+
+    function selectvideo(id) {
+        var main_image = document.getElementById("videoframe");
+        main_image.src = 'http://www.youtube-nocookie.com/embed/'+id+'?wmode=opaque&rel=0&autohide=1&showinfo=0&autoplay=1';
+        var video_frame_cont = document.getElementById("main_div_video_frame");
+        scrollToElement(main_div_video_frame);
+    };
+</script>

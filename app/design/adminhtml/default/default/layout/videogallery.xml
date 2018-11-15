@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+  <videogallery_adminhtml_videogallery_index>
+	<reference name="content">
+	  <block type="videogallery/adminhtml_videogallery" name="videogallery" />
+	</reference>
+  </videogallery_adminhtml_videogallery_index>
+</layout>

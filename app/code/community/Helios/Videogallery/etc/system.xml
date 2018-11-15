@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<config>
+	  <tabs>
+		<videogallery translate="label" module="videogallery">
+            <label>Video Gallery</label>
+            <label>
+                <![CDATA[<div style="position: absolute;"><img id="amasty_block" src="" alt="" border="0" style="padding-right:5px;"/>Video Gallery</div>&nbsp;<script>
+            var n = SKIN_URL.indexOf("adminhtml");
+            $('amasty_block').src = SKIN_URL.substring(0, n) + "adminhtml/default/default/images/Helios/favicon.ico";
+            </script>]]>
+            </label>
+            <sort_order>0</sort_order>
+        </videogallery>
+	  </tabs>
+	  <sections>
+		<gallerysetting  translate="label" module="videogallery">                    
+		<label>Video Gallery Setting</label>
+		<tab>videogallery</tab>
+		<frontend_type>text</frontend_type>
+		<sort_order>0</sort_order>
+		<show_in_default>1</show_in_default>
+		<show_in_website>1</show_in_website>
+		<show_in_store>1</show_in_store>            
+					<groups>
+				      <aboutus translate="label"> 
+					  <label>About Us</label>
+					  <frontend_type>text</frontend_type>
+					  <sort_order>0</sort_order>
+					  <show_in_default>1</show_in_default>
+					  <show_in_website>1</show_in_website>
+					  <show_in_store>1</show_in_store>
+                          <fields>
+                              <info>
+                                  <frontend_model>videogallery/about</frontend_model>
+                                  <sort_order>10</sort_order>
+                                  <show_in_default>1</show_in_default>
+                                  <show_in_website>1</show_in_website>
+                                  <show_in_store>1</show_in_store>
+                              </info>
+                          </fields>
+					   </aboutus>
+				      <heliossetting translate="label"> 
+					  <label>Set Video Gallery</label>
+					  <frontend_type>text</frontend_type>
+					  <sort_order>0</sort_order>
+					  <show_in_default>1</show_in_default>
+					  <show_in_website>1</show_in_website>
+					  <show_in_store>1</show_in_store>
+				       <fields>
+                          <enabled translate="label">
+                            <label>Enable Video Gallery</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<comment>Enable/Disable your Module</comment>
+                          </enabled>
+                          <videotitle translate="label">
+                              <label>Video Gallery Title</label>
+                              <frontend_type>text</frontend_type>							  
+                              <validate>validate-alphanum-with-spaces</validate>
+                              <sort_order>1</sort_order>
+                              <show_in_default>1</show_in_default>
+                              <show_in_website>1</show_in_website>
+                              <show_in_store>1</show_in_store>
+                              <comment>Video Gallery title which will displayed at frontend side.</comment>
+                          </videotitle>
+                          <videodesc translate="label">
+                               <label>Video Gallery Description</label>
+                               <frontend_type>textarea</frontend_type>
+                               <sort_order>2</sort_order>
+                               <show_in_default>1</show_in_default>
+                               <show_in_website>1</show_in_website>
+                               <show_in_store>1</show_in_store>
+                               <comment>Video Gallery description which will displayed at frontend side.</comment>
+                          </videodesc>
+                           <videowidth translate="label">
+                               <label>Default Video Width</label>
+                               <frontend_type>text</frontend_type>
+                               <validate>validate-number</validate>
+                               <sort_order>3</sort_order>
+                               <show_in_default>1</show_in_default>
+                               <show_in_website>1</show_in_website>
+                               <show_in_store>1</show_in_store>
+                           </videowidth>
+                           <videoheight translate="label">
+                               <label>Default Video Height</label>
+                               <frontend_type>text</frontend_type>
+                               <validate>validate-number</validate>
+                               <sort_order>4</sort_order>
+                               <show_in_default>1</show_in_default>
+                               <show_in_website>1</show_in_website>
+                               <show_in_store>1</show_in_store>
+                           </videoheight>
+					   </fields>
+					   </heliossetting>
+					</groups>
+		</gallerysetting>
+	  </sections>
+</config>
