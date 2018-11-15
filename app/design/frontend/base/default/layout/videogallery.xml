@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <layout version="0.1.0">
     <default>
-        <reference name="top.links">
-            <action method="addLink" translate="label title" module="videogallery">
+        <reference name="top.links" >
+            <action method="addLink" translate="label title" module="videogallery" ifconfig="gallerysetting/heliossetting/enabled" condition="1">
                 <label>Video Gallery</label>
-                <url>videogallery/</url>
+                <url>videogallery</url>
                 <title>Video Gallery</title>
                 <prepare>ture</prepare>
                 <urlParams/>
@@ -18,9 +18,12 @@
                 <template>page/1column.phtml</template>
             </action>
         </reference>
+        <reference name="head">
+            <action method="addItem"><type>skin_js</type><name>js/Helios/videogallery.js</name></action>
+            <action method="addItem"><type>skin_css</type><name>css/Helios/videogallery.css</name></action>
+        </reference>
         <reference name="content">
             <block type="videogallery/index" name="videogallery_index" template="videogallery/videogallery.phtml"/>
         </reference>
     </videogallery_index_index>
-</layout>   
-	
+</layout>
