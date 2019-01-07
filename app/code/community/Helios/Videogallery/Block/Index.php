@@ -44,7 +44,8 @@ class Helios_Videogallery_Block_Index extends Mage_Core_Block_Template
      */
     public function getWidth()
     {
-        return Mage::getStoreConfig(Helios_Videogallery_Helper_Data::CONFIG_GALLERY_VIDEO_WIDTH);
+        $width = Mage::getStoreConfig(Helios_Videogallery_Helper_Data::CONFIG_GALLERY_VIDEO_WIDTH);
+        return $width ? $width : '640';
     }
 
     /**
@@ -54,7 +55,8 @@ class Helios_Videogallery_Block_Index extends Mage_Core_Block_Template
      */
     public function getHeight()
     {
-        return Mage::getStoreConfig(Helios_Videogallery_Helper_Data::CONFIG_GALLERY_VIDEO_HEIGHT);
+        $height = Mage::getStoreConfig(Helios_Videogallery_Helper_Data::CONFIG_GALLERY_VIDEO_HEIGHT);
+        return $height ? $height : '360';
     }
 
     /**

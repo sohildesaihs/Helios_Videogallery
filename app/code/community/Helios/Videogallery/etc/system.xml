@@ -67,6 +67,7 @@
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
+                            <comment>It would consider 640, if it's empty.</comment>
                         </videowidth>
                         <videoheight translate="label">
                             <label>Default Video Height</label>
@@ -76,6 +77,7 @@
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
+                            <comment>It would consider 360, if it's empty.</comment>
                         </videoheight>
                     </fields>
                 </heliossetting>
