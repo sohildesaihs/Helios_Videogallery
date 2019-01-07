@@ -1,46 +1,38 @@
-<?php if (Mage::helper('videogallery')->checkEnableDisable()): ?>
-    <div style="text-align: center">
-        <?php $data = $this->getAllData(); ?>
+<div class="video-gallery-container">
 
-        <u><h1 style="text-align: left"><?php echo $this->getTitle() ?></h1></u>
-        <p style="text-align: left"><?php echo $this->getDescription() ?></p>
+    <?php $data = $this->getAllData(); ?>
 
-        <?php if (count($data) == 0): ?>
-            <h2><b><?php echo $this->__('There are no videos availble into the gallery at the moment.') ?><b></h2>
-        <?php else: ?>
-            <?php $firstItemUrlKey = explode('?v=', $data->getFirstItem()->getVideogalleryUrl()) ?>
-            <div id="main_div_video_frame">
-                <iframe id="videoframe" width="<?php echo $this->getWidth(); ?>"
+    <u><h1><?php echo $this->getTitle() ?></h1></u>
+    <p><?php echo $this->getDescription() ?></p>
+
+    <?php if (count($data) == 0): ?>
+        <h2><b><?php echo $this->__('There are no videos availble into the gallery at the moment.') ?><b></h2>
+    <?php endif; ?>
+
+    <div class="gallery-slider-main">
+        <?php foreach ($data as $key => $value): ?>
+            <?php
+            $urlKey = explode('?v=', $value->getVideogalleryUrl());
+            $videoSrc = "http://www.youtube-nocookie.com/embed/" . $urlKey[1] . "?wmode=opaque&rel=0&autohide=1&showinfo=0&autoplay=0";
+            ?>
+            <div class="video-frame">
+                <iframe id="iframe-<?php echo $key; ?>"
+                        width="<?php echo $this->getWidth(); ?>"
                         height="<?php echo $this->getHeight(); ?>"
-                        src="http://www.youtube-nocookie.com/embed/<?php echo $firstItemUrlKey[1]; ?>?wmode=opaque&rel=0&autohide=1&showinfo=0&autoplay=0"
+                        src="<?php echo $videoSrc; ?>"
                         frameborder="0" allowfullscreen></iframe>
+                <h3><?php echo $value->getName() ?></h3>
             </div>
-            <?php
-            foreach ($data as $key => $result):
-                $url_key = explode('?v=', $result->getVideogalleryUrl());
-                ?>
-
-                <div style="float: left;margin: 5px 10px 5px 5px;width: 285px;position: relative;">
-                    <a style="text-decoration:none;" href="#" onclick="selectvideo('<?php echo $url_key[1] ?>');"> <img
-                                src="<?php echo $this->getSkinUrl('images/helios/youtube-play-button.png')?>"
-                                alt="" style="position: absolute;top: 80px;left: 110px;width: 50px;"><img
-                                src="http://img.youtube.com/vi/<?php echo $url_key[1] ?>/0.jpg" width="285px">
-                        <p style="text-align: justify;margin-top: 5px; "> <?php echo $result->getName() ?></p></a>
-                </div>
-            <?php
-            endforeach;
-        endif;
-        ?>
+        <?php endforeach; ?>
     </div>
-<?php else: ?>
-    <h2 style="border: 2px solid #000"><?php echo $this->__('This extension is Currently disabled so it will be redirected to our homepage in 5 seconds.') ?></h2>
-    <script type="text/javascript">
-        //<![CDATA[
-        setTimeout(function () {
-            location.href = '<?php echo $this->getUrl('') ?>'
-        }, 5000);
-        //]]>
-    </script>
-<?php
-endif; ?>
+</div>
 
+<script type="text/javascript">
+    jQuery(document).ready(function (e) {
+        jQuery('.gallery-slider-main').slick({
+            dots: true,
+            infinite: true,
+            cssEase: 'linear'
+        });
+    });
+</script>

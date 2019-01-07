@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <layout version="0.1.0">
     <default>
-        <reference name="top.links" >
-            <action method="addLink" translate="label title" module="videogallery" ifconfig="gallerysetting/heliossetting/enabled" condition="1">
+        <reference name="top.links">
+            <action method="addLink" translate="label title" module="videogallery" ifconfig="gallerysetting/heliossetting/enabled">
                 <label>Video Gallery</label>
                 <url>videogallery</url>
                 <title>Video Gallery</title>
@@ -19,11 +19,25 @@
             </action>
         </reference>
         <reference name="head">
-            <action method="addItem"><type>skin_js</type><name>js/helios/videogallery.js</name></action>
-            <action method="addItem"><type>skin_css</type><name>css/helios/videogallery.css</name></action>
+            <action method="addItem" ifconfig="gallerysetting/heliossetting/enabled">
+                <type>skin_js</type>
+                <name>js/helios/slick.min.js</name>
+            </action>
+            <action method="addItem" ifconfig="gallerysetting/heliossetting/enabled">
+                <type>skin_css</type>
+                <name>css/helios/slick.css</name>
+            </action>
+            <action method="addItem" ifconfig="gallerysetting/heliossetting/enabled">
+                <type>skin_css</type>
+                <name>css/helios/slick-theme.css</name>
+            </action>
+            <action method="addItem" ifconfig="gallerysetting/heliossetting/enabled">
+                <type>skin_css</type>
+                <name>css/helios/videogallery-custom.css</name>
+            </action>
         </reference>
         <reference name="content">
-            <block type="videogallery/index" name="videogallery_index" template="helios/videogallery/videogallery.phtml"/>
+            <block type="videogallery/index" name="videogallery_index" template="helios/videogallery/videogallery.phtml" />
         </reference>
     </videogallery_index_index>
 </layout>
