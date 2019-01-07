@@ -19,6 +19,14 @@
             </action>
         </reference>
         <reference name="head">
+            <action method="addItem" ifconfig="gallerysetting/heliossetting/jquery">
+                <type>skin_js</type>
+                <name>js/helios/jquery-1.10.2.min.js</name>
+            </action>
+            <action method="addItem" ifconfig="gallerysetting/heliossetting/jquery">
+                <type>skin_js</type>
+                <name>js/helios/noconflict.js</name>
+            </action>
             <action method="addItem" ifconfig="gallerysetting/heliossetting/enabled">
                 <type>skin_js</type>
                 <name>js/helios/slick.min.js</name>

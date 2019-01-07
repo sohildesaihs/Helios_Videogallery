@@ -79,6 +79,16 @@
                             <show_in_store>1</show_in_store>
                             <comment>It would consider 360, if it's empty.</comment>
                         </videoheight>
+                        <jquery translate="label">
+                            <label>Include jquery on front</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Keep yes only if no other jquery included by current theme on front.</comment>
+                        </jquery>
                     </fields>
                 </heliossetting>
                 <aboutus translate="label">
