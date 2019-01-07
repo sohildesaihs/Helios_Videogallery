@@ -3,10 +3,10 @@
     <default>
         <gallerysetting>
             <heliossetting>
-                <videowidth>655</videowidth>
+                <videowidth>640</videowidth>
             </heliossetting>
             <heliossetting>
-                <videoheight>311</videoheight>
+                <videoheight>260</videoheight>
             </heliossetting>
         </gallerysetting>
     </default>
