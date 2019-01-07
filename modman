@@ -1,0 +1,27 @@
+#
+#	Helios_Videogallery Modman Magento Configuration
+#
+
+#layouts
+app/design/frontend/base/default/layout/helios/* app/design/frontend/base/default/layout/helios/
+app/design/adminhtml/base/default/layout/helios/* app/design/adminhtml/base/default/layout/helios/
+
+#templates
+app/design/frontend/base/default/template/helios/videogallery/* app/design/frontend/base/default/template/helios/videogallery/
+app/design/adminhtml/base/default/template/helios/videogallery/* app/design/adminhtml/base/default/template/helios/videogallery/
+
+#code
+app/code/community/Helios/Videogallery/* app/code/community/Helios/Videogallery/
+
+#module declaration
+app/etc/modules/* app/etc/modules/
+
+#stylesheets-admin
+skin/adminhtml/base/default/images/helios/* skin/adminhtml/base/default/images/helios/
+
+#stylesheets/js
+skin/frontend/base/default/css/helios/* skin/frontend/base/default/css/helios/
+skin/frontend/base/default/js/helios/* skin/frontend/base/default/js/helios/
+
+#translations
+app/locale/en_US/* app/locale/en_US/
