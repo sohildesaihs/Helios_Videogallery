@@ -139,15 +139,16 @@ class Helios_Videogallery_Adminhtml_VideogalleryController extends Mage_Adminhtm
      */
     public function deleteAction()
     {
-        if ($this->getRequest()->getParam("id") > 0) {
+        $id = $this->getRequest()->getParam("videogallery_id");
+        if ($id > 0) {
             try {
                 $model = Mage::getModel("videogallery/videogallery");
-                $model->setId($this->getRequest()->getParam("id"))->delete();
+                $model->setId($id)->delete();
                 Mage::getSingleton("adminhtml/session")->addSuccess($this->__("Video item successfully deleted"));
                 $this->_redirect("*/*/");
             } catch (Exception $e) {
                 Mage::getSingleton("adminhtml/session")->addError($e->getMessage());
-                $this->_redirect("*/*/edit", array("id" => $this->getRequest()->getParam("id")));
+                $this->_redirect("*/*/edit", array("id" => $id));
             }
         }
 
